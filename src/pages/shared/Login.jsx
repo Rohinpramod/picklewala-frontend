@@ -16,7 +16,7 @@ const Login = ({ isOpen, onClose, onOpenSignUp }) => {
     signup_route:{onOpenSignUp},
   };
   
-  console.log("user==",user);
+
 
   const onSubmit = async (data) => {
     console.log("dataaa",data)

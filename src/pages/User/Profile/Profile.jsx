@@ -28,67 +28,64 @@ const ProfilePage = () => {
   const lastThreeOrders = orders?.orders?.slice(0, 3);
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row relative bg-gray-100">
-      {/* Sticky Navigation Card */}
-      <div className="lg:sticky top-0 left-4 mt-4 lg:mt-14 bg-white shadow-md rounded-lg p-4 lg:w-64 w-full h-auto lg:h-96">
-        <nav className="space-y-4 flex flex-row lg:block justify-start">
-          <div>
-            <button
-              className={`px-4 py-2 rounded-md mt-3 ${
-                activeSection === "profile"
-                  ? "bg-orange-600 text-white"
-                  : "text-gray-600 hover:bg-gray-200"
-              }`}
-              onClick={() => setActiveSection("profile")}
-            >
-              <FaUser className="inline-block mr-2" />
-              Profile
-            </button>
-          </div>
-          <div>
-            <button
-              className={`px-4 py-2 rounded-md ${
-                activeSection === "orders"
-                  ? "bg-orange-600 text-white"
-                  : "text-gray-600 hover:bg-gray-200"
-              }`}
-              onClick={() => setActiveSection("orders")}
-            >
-              <FaListAlt className="inline-block mr-2" />
-              Orders
-            </button>
-          </div>
-          <div>
-            <button
-              className={`px-4 py-2 rounded-md ${
-                activeSection === "addresses"
-                  ? "bg-orange-600 text-white"
-                  : "text-gray-600 hover:bg-gray-200"
-              }`}
-              onClick={() => setActiveSection("addresses")}
-            >
-              <FaAddressCard className="inline-block mr-2" />
-              Addresses
-            </button>
-          </div>
-        </nav>
-      </div>
+  <div className="min-h-screen flex flex-col lg:flex-row bg-[#f9f9f9] font-sans">
+    {/* Sidebar Navigation */}
+    <div className="lg:sticky top-20 lg:h-auto w-full lg:w-64 bg-white shadow-lg rounded-xl mx-4 my-6 p-6 space-y-6">
+      <h2 className="text-xl font-semibold text-red-800">My Account</h2>
+      <nav className="space-y-3">
+        <button
+          className={`flex items-center w-full px-4 py-2 rounded-lg transition ${
+            activeSection === "profile"
+              ? "bg-yellow-400 text-red-700 shadow"
+              : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+          }`}
+          onClick={() => setActiveSection("profile")}
+        >
+          <FaUser className="mr-2" />
+          Profile
+        </button>
 
-      {/* Main Content */}
-      <div className="flex-1  p-4 lg:p-6 mt-5 lg:ml-4">
-        {activeSection === "profile" && <Account profile={profile} />}
+        <button
+          className={`flex items-center w-full px-4 py-2 rounded-lg transition ${
+            activeSection === "orders"
+              ? "bg-yellow-400 text-red-700  shadow"
+              : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+          }`}
+          onClick={() => setActiveSection("orders")}
+        >
+          <FaListAlt className="mr-2" />
+          Orders
+        </button>
 
-        {activeSection === "orders" && (
-          <Orders lastThreeOrders={lastThreeOrders} />
-        )}
-        {activeSection === "addresses" && (
-          <div>
-            <SavedAddresses addresses={profile.data.addresses} fetchData={fetchData}/>
-          </div>
-        )}
-      </div>
+        <button
+          className={`flex items-center w-full px-4 py-2 rounded-lg transition ${
+            activeSection === "addresses"
+              ? "bg-yellow-400 text-red-700 shadow"
+              : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+          }`}
+          onClick={() => setActiveSection("addresses")}
+        >
+          <FaAddressCard className="mr-2" />
+          Addresses
+        </button>
+      </nav>
     </div>
-  );
+
+    {/* Content Area */}
+    <div className="flex-1 px-4 py-6 lg:px-10">
+      {activeSection === "profile" && <Account profile={profile} />}
+
+      {activeSection === "orders" && (
+        <Orders lastThreeOrders={lastThreeOrders} />
+      )}
+
+      {activeSection === "addresses" && (
+        <SavedAddresses addresses={profile.data.addresses} fetchData={fetchData} />
+      )}
+    </div>
+  </div>
+);
+
 };
 
 export default ProfilePage;

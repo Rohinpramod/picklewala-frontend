@@ -5,20 +5,19 @@ import About from "../pages/User/About";
 import Cart from "../pages/User/Cart";
 import Contact from "../pages/User/Contact";
 import OrderDetails from "../../src/pages/User/OrderDetails";
-import SearchPage from "../pages/User/SearchPage";
+
 import Signup from "../pages/shared/Signup";
-import Payment from "../pages/User/Payment";
+
 import UserLayout from "../layout/UserLayout";
 import ErrorPage from "../pages/shared/ErrorPage";
-import AllRestaurants from "../pages/User/AllRestaurants";
-import RestaurantPage from "../pages/User/RestaurantPage";
-import RatingPage from "../pages/User/Rating";
+
 import LoginPage from "../pages/shared/Login";
 import CheckoutPage from "../pages/User/CheckoutPage/CheckoutPage";
-import ReviewPage from "../pages/User/ReviewPage";
 import { ProtectedRoute } from "./ProtectedRoute";
 import ProfilePage from "../pages/User/Profile/Profile";
 import Invoice from "../pages/User/CheckoutPage/Invoice";
+import ItemDetails from "../pages/ItemDetails";
+import Pickles from "../pages/Pickles";
 
 const router = createBrowserRouter([
   {
@@ -43,21 +42,15 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "all-restuarant",
-        element: <AllRestaurants />,
+        path: "item-Details/:id",
+        element: <ItemDetails />,
       },
       {
-        path: "restaurantPage/:id",
-        element: <RestaurantPage />,
+        path: "pickles",
+        element: <Pickles />,
       },
-      {
-        path:"review/:id",
-        element:<ReviewPage />
-      },
-      {
-        path: "payment",
-        element: <Payment />,
-      },
+
+      
       {
         element:<ProtectedRoute />,
         path:"/",

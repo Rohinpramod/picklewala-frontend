@@ -10,7 +10,7 @@ const navigation = [
   // { name: 'Dashboard', href: '#', current: true },
   // { name: 'Home', href: '#', current: false },
   { name: 'About Us', href: '/about', current: false },
-  { name: 'Pickles', href: '/all-restuarant', key: 'restaurants' },
+  { name: 'Pickles', href: '/pickles', key: 'restaurants' },
 
 ];
 
@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <Disclosure as="nav" className="bg-orange-600">
+      <Disclosure as="nav" className="bg">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             {/* Mobile Menu Button */}
@@ -47,7 +47,7 @@ export default function Header() {
               <Link to="">
                 <img alt="Your Company" src={logo} className="h-12 w-auto" />
               </Link>
-              <h2 className="text-white font-semibold ps-2">GOURMET</h2>
+              
             </div>
 
             {/* Navigation */}
@@ -61,9 +61,9 @@ export default function Header() {
                       aria-current={item.current ? 'page' : undefined}
                       className={classNames(
                         item.current
-                          ? 'bg-gray-50 text-black transition ease-in-out delay-1'
-                          : 'hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300',
-                        'rounded-md px-3 py-2 text-sm font-medium',
+                          ? "bg-yellow-200 transition ease-in-out delay-1"
+                        : "hover:-translate-y-1  hover:scale-110  duration-300",
+                      "rounded-md px-3 py-2 text-sm font-medium  text-red-700   ",
                       )}
                     >
                       {item.name}
@@ -75,10 +75,10 @@ export default function Header() {
 
             {/* Buttons */}
             <div className="flex gap-3">
-              <button className="btn btn-active" onClick={openLogin}>
+              <button className="btn bg-red-700 text-yellow-400" onClick={openLogin}>
                 Login
               </button>
-              <button className="btn btn-active" onClick={openSignUp}>
+              <button className="btn bg-red-700 text-yellow-400" onClick={openSignUp}>
                 Sign Up
               </button>
             </div>

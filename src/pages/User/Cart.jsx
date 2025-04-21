@@ -17,6 +17,7 @@ const CartPage = () => {
       const response = await axiosInstance({
         url: "/cart/get-cart-items",
       });
+      console.log(response,'=====response')
       setCartItems(response?.data.data || null);
       setLoading(false);
     } catch (error) {
@@ -25,15 +26,16 @@ const CartPage = () => {
     }
   };
 
+
   useEffect(() => {
     fetchCartItems();
   }, []);
 
   // Handle quantity change (increment/decrement)
-  const updateQuantity = async (foodId, action) => {
+  const updateQuantity = async (itemId, action) => {
     try {
       const response = await axiosInstance.post("/cart/add-quantity", {
-        foodId,
+        itemId,
         action,
       });
       Toast.success("Done");
@@ -44,12 +46,12 @@ const CartPage = () => {
   };
 
   // Remove an item from the cart
-  const removeItem = async (foodId) => {
+  const removeItem = async (itemId) => {
     try {
       const result = await showAlert("confirmDeletion");
       if (result.isConfirmed) {
         const response = await axiosInstance.delete(
-          `cart/delete-cart-items/${foodId}`
+          `cart/delete-cart-items/${itemId}`
         );
         if (response?.data.cart) {
           setCartItems(response.data.cart);
@@ -63,6 +65,7 @@ const CartPage = () => {
       await showAlert("deletionError");
     }
   };
+
 
   // Calculate total price
   const calculateTotal = () => {
@@ -96,30 +99,30 @@ const CartPage = () => {
         <div className="space-y-6">
           {cartItems.items.map((item) => (
             <div
-              key={item.foodId._id}
+              key={item.itemId._id}
               className="flex flex-col sm:flex-row items-center justify-between border-b pb-4 space-y-4 sm:space-y-0"
             >
               <img
-                src={item.foodId.image}
-                alt={item.foodId.name}
+                src={item.itemId.image}
+                alt={item.itemId.name}
                 className="w-20 h-20 object-cover rounded-md"
               />
               <div className="flex-grow text-center sm:text-left sm:ml-4">
                 <h2 className="text-lg sm:text-xl font-semibold">
-                  {item.foodId.name}
+                  {item.itemId.name}
                 </h2>
                 <p className="text-gray-500">₹{item.totalItemPrice}</p>
                 <div className="flex items-center justify-center sm:justify-start mt-2 space-x-2">
                   <button
                     className="px-2 py-1 bg-gray-200 rounded-md"
-                    onClick={() => updateQuantity(item.foodId._id, "decrement")}
+                    onClick={() => updateQuantity(item.itemId._id, "decrement")}
                   >
                     -
                   </button>
                   <span className="px-4">{item.quantity}</span>
                   <button
                     className="px-2 py-1 bg-gray-200 rounded-md"
-                    onClick={() => updateQuantity(item.foodId._id, "increment")}
+                    onClick={() => updateQuantity(item.itemId._id, "increment")}
                   >
                     +
                   </button>
@@ -129,7 +132,7 @@ const CartPage = () => {
                 <p className="text-lg font-semibold">₹{item.totalItemPrice}</p>
                 <IoTrashBin
                   className="cursor-pointer hover:scale-110 transition"
-                  onClick={() => removeItem(item.foodId._id)}
+                  onClick={() => removeItem(item.itemId._id)}
                 />
               </div>
             </div>

@@ -15,7 +15,7 @@ const UserLayout= () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  console.log("location.pathname",location.pathname)
+  
   
   
   const checkUser = async ()=>{
@@ -31,8 +31,7 @@ const UserLayout= () => {
     }
 
   };
-  console.log("isUserAuth====",isUserAuth);
-  console.log("userData",userData);
+  
 
   useEffect(()=>{
     checkUser();

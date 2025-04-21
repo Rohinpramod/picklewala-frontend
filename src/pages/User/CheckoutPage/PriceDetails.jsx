@@ -15,7 +15,6 @@ function PriceDetails({
   address
 }) {
  const navigate = useNavigate()
-  
   if (!cart) {
     return (
       <div className="text-center text-gray-500">No cart data available</div>
@@ -41,7 +40,7 @@ function PriceDetails({
   
       // Proceed with the checkout
       const checkoutData = {
-        restaurant: cart.restaurantId,
+        item: cart.itemId,
         cartId: cart._id,
         coupon: selectedCoupon || null,
         deliveryAddress: addressId, // Use the updated or existing address ID
@@ -57,15 +56,16 @@ function PriceDetails({
         key: `${import.meta.env.VITE_RAZORPAY_ID_KEY}`,
         amount: payment.data.razorpayOrder.amount,
         currency: "INR",
-        name: "Capstone",
-        description: "Capstone",
+        name: "Pickle Walah",
+        description: "",
         order_id: payment.data.razorpayOrder.id,
         handler: async (response) => {
           try {
-            await axiosInstance.post("/order/verify-payment", response);
+            await axiosInstance.post("('/order/verify-payment", response);
             setSelectedCoupon(null);
             navigate(`/invoice/${orderId}`, { state: { discount } });
             toast.success("Your order is placed successfully");
+
           } catch (error) {
             console.error("Verification failed:", error);
             toast.error("Payment verification failed.");
@@ -78,6 +78,7 @@ function PriceDetails({
   
       const razorpayInstance = new Razorpay(options);
       razorpayInstance.open();
+      
     } catch (error) {
       console.error("Failed to place the order:", error.response?.data || error.message);
       toast.error(error.response?.data?.message || "Error while placing the order.");
@@ -95,10 +96,10 @@ function PriceDetails({
 
         {/* Item List */}
         <div className="space-y-2 mb-4">
-          {cart.items.map((item) => (
-            <div key={item._id} className="flex justify-between items-center">
+          {cart.items.map((item,index) => (
+            <div key={index} className="flex justify-between items-center">
               <div className="flex-grow">
-                <span className="">{item.foodId.name}</span>
+                <span className="">{item.itemId.name}</span>
                 <span className="text-gray-500 ml-2">(x{item.quantity})</span>
               </div>
               <span className="">₹{item.totalItemPrice}</span>
