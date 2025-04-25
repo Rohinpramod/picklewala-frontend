@@ -14,10 +14,6 @@ function Orders({lastThreeOrders}) {
                   <span className="font-medium">Order ID:</span> {order._id}
                 </p>
                 <p>
-                  <span className="font-medium">Restaurant:</span>{" "}
-                  {order.restaurant?.name}
-                </p>
-                <p>
                   <span className="font-medium">Status:</span> {order.status}
                 </p>
                 <p>
@@ -36,7 +32,7 @@ function Orders({lastThreeOrders}) {
         )}
         <div className="mt-4">
           <Link to="/order">
-            <button className="btn bg-orange-600 text-white hover:bg-orange-700 px-4 py-2 rounded-md">
+            <button className="btn bg-red-700 text-white hover:bg-red-600 px-4 py-2 rounded-md">
               View All Orders
             </button>
           </Link>

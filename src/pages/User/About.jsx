@@ -67,8 +67,8 @@ const AboutPage = () => {
           Ready to experience the ultimate pickle? Order now and taste the difference!
         </h2>
         <Link to="/pickles">
-          <button className="mt-6 px-8 py-4 bg-red-700 text-white font-semibold rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
-            Browse the Taste
+          <button className="mt-6 px-20 py-2 bg-red-700 text-white font-semibold rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
+            Click here !
           </button>
         </Link>
       </div>

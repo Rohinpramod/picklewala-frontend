@@ -39,7 +39,7 @@ const CartPage = () => {
         action,
       });
       Toast.success("Done");
-      setCartItems(response?.data.cart);
+      await fetchCartItems();
     } catch (error) {
       console.error(error);
     }
@@ -54,7 +54,7 @@ const CartPage = () => {
           `cart/delete-cart-items/${itemId}`
         );
         if (response?.data.cart) {
-          setCartItems(response.data.cart);
+          await fetchCartItems();
         } else {
           setCartItems(null);
         }

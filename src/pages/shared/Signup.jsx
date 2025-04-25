@@ -32,6 +32,7 @@ const SignUpPage = ({ isOpen, onClose }) => {
             phone: formData.phone,
             name: formData.name,
             password: formData.password,
+            role:formData.role
           });
 
           if(response.status === 200){
@@ -55,7 +56,7 @@ const SignUpPage = ({ isOpen, onClose }) => {
       const response = await axiosInstance.post('/user/signup', formData);
       if (response.data.success) {
         toast.success('Signup successful!');
-        setFormData({ name: '', email: '', password: '',mobile:'', otp:''}); // Reset form
+        setFormData({ name: '', email: '', password: '',phone:'', otp:''}); // Reset form
       } else {
         alert(response.data.message || 'Signup failed. Please try again.');
       }
@@ -170,6 +171,7 @@ const SignUpPage = ({ isOpen, onClose }) => {
             className={`w-full py-2 bg-orange-600 text-white font-medium rounded-md ${
               loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-orange-500'
             }`}
+            
           >
             {loading ? 'Signing up...' : showOtpField ? 'Sign Up' : 'send OTP'}
           </button>
