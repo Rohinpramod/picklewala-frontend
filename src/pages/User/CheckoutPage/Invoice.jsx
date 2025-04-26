@@ -50,9 +50,9 @@ function Invoice() {
 
       <div className="mb-4">
         <h2 className="text-xl font-semibold">Restaurant Details</h2>
-        <p>
+        {/* <p>
           <strong>Name:</strong> {orderData.restaurant.name}
-        </p>
+        </p> */}
       </div>
 
       <div className="mb-4">
@@ -71,7 +71,7 @@ function Invoice() {
               {orderData.cartId.items.map((item) => (
                 <tr key={item._id}>
                   <td className="border border-gray-300 px-4 py-2">
-                    {item.foodId.name}
+                    {item.itemId.name}
                   </td>
                   <td className="border border-gray-300 px-4 py-2">
                     {item.quantity}

@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { axiosInstance } from "../../../config/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
+
 function PriceDetails({
   cart,
   discount,
@@ -42,7 +43,7 @@ function PriceDetails({
       const checkoutData = {
         item: cart.itemId,
         cartId: cart._id,
-        coupon: selectedCoupon || null,
+        coupon: selectedCoupon,
         deliveryAddress: addressId, // Use the updated or existing address ID
       };
   
@@ -61,10 +62,11 @@ function PriceDetails({
         order_id: payment.data.razorpayOrder.id,
         handler: async (response) => {
           try {
-            await axiosInstance.post("('/order/verify-payment", response);
+            await axiosInstance.post("/order/verify-payment", response);
             setSelectedCoupon(null);
-            navigate(`/invoice/${orderId}`, { state: { discount } });
+            navigate(`invoice/${orderId}`, { state: { discount } });
             toast.success("Your order is placed successfully");
+
 
           } catch (error) {
             console.error("Verification failed:", error);

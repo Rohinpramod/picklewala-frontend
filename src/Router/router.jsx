@@ -76,7 +76,7 @@ const router = createBrowserRouter([
             element:<CheckoutPage />
           },
           {
-            path:"invoice/:orderId",
+            path:"checkout/invoice/:orderId",
             element:<Invoice />
           },
          
