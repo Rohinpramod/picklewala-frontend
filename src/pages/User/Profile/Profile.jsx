@@ -7,8 +7,8 @@ import Account from "./Account";
 
 const ProfilePage = () => {
   const [profile, isLoading, error,fetchData] = useFetch("/user/profile");
-  const [orders, ordersLoading, ordersError] = useFetch("/order/get-all-order");
-
+  const [orders, ordersLoading, ordersError] = useFetch("/order/get-user-order");
+ console.log(orders,'====orders')
   const [activeSection, setActiveSection] = useState("profile"); // Default to Profile section
 
   if (isLoading || ordersLoading) {
@@ -25,7 +25,7 @@ const ProfilePage = () => {
     );
   }
 
-  const lastThreeOrders = orders?.orders?.slice(0, 3);
+  const lastThreeOrders = orders?.data?.slice(0, 10);
 
   return (
   <div className="min-h-screen flex flex-col lg:flex-row bg-[#f9f9f9] font-sans">

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import useFetch from "../../hooks/UseFetch";
 
 const OrderDetails = () => {
-  const [orderData, loading, errors] = useFetch("/order/get-all-order");
-  const orders = orderData?.orders;
+  const [orderData, loading, errors] = useFetch("/order/get-user-order");
+  const orders = orderData?.data;
   
   // State for pagination
   const [currentPage, setCurrentPage] = useState(1);

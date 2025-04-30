@@ -24,54 +24,55 @@ const SignUpPage = ({ isOpen, onClose }) => {
 
   const handleButtonClick = async (e) => {
     e.preventDefault();
-    if(!showOtpField){
-      if(formData.email && formData.phone && formData.name && formData.password){
-        try{
-          const response = await axiosInstance.post('/user/signup',{
+    if (!showOtpField) {
+      if (formData.email && formData.phone && formData.name && formData.password) {
+        try {
+          setLoading(true); // Disable the button right when OTP is being sent.
+          const response = await axiosInstance.post('/user/signup', {
             email: formData.email,
             phone: formData.phone,
             name: formData.name,
             password: formData.password,
-            role:formData.role
+            role: formData.role,
           });
-
-          if(response.status === 200){
+  
+          if (response.status === 200) {
             toast.success(`OTP sent to ${formData.email}`);
             setShowOtpField(true);
           }
-        }catch(error){
+        } catch (error) {
           toast.error(error.response?.data?.message || 'Failed to send OTP');
+        } finally {
+          setLoading(false); // Re-enable the button once the OTP process is complete.
         }
-      }else{
+        return;
+      } else {
         toast.error('Please fill all fields before requesting OTP.');
       }
-      return;
-    }
-
-    // Continue to submit if OTP field is shown
-    setMessage('');
-    setLoading(true);
-
-    try {
-      const response = await axiosInstance.post('/user/signup', formData);
-      if (response.data.success) {
-        toast.success('Signup successful!');
-        setFormData({ name: '', email: '', password: '',phone:'', otp:''}); // Reset form
-      } else {
-        alert(response.data.message || 'Signup failed. Please try again.');
+    } else {
+      // Continue to submit if OTP field is shown
+      setMessage('');
+      setLoading(true);
+  
+      try {
+        const response = await axiosInstance.post('/user/signup', formData);
+        if (response.data.success) {
+          toast.success('Signup successful!');
+          setFormData({ name: '', email: '', password: '', phone: '', otp: '' }); // Reset form
+        } else {
+          alert(response.data.message || 'Signup failed. Please try again.');
+        }
+      } catch (error) {
+        if (error.response?.data?.message === 'user already exist') {
+          toast.error('User already exists. Please login instead.');
+        } else {
+          toast.error(error.response?.data?.message || 'An error occurred. Please try again.');
+        }
+      } finally {
+        setLoading(false);
+        onClose();
+        window.location.reload();
       }
-    } catch (error) {
-     
-      if (error.response?.data?.message === 'user already exist') {
-        toast.error('User already exists. Please login instead.');
-      } else {
-        toast.error(error.response?.data?.message || 'An error occurred. Please try again.');
-      }
-    }
-      finally {
-      setLoading(false);
-      onClose();
-      window.location.reload()
     }
   };
 
@@ -173,7 +174,7 @@ const SignUpPage = ({ isOpen, onClose }) => {
             }`}
             
           >
-            {loading ? 'Signing up...' : showOtpField ? 'Sign Up' : 'send OTP'}
+            {loading ? 'Please wait...' : showOtpField ? 'Sign Up' : 'send OTP'}
           </button>
         </form>
       </div>

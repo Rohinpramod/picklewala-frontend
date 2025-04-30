@@ -43,7 +43,7 @@ function UserHeader() {
       localStorage.clear();
       toast.success("Logout successfully");
       navigate("/");
-      window.location.reload();
+      
     } catch (error) {
       console.error(error);
     }

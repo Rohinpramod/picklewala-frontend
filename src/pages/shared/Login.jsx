@@ -25,9 +25,10 @@ const Login = ({ isOpen, onClose, onOpenSignUp }) => {
         const response = await axiosInstance.request({ method: "POST", url: user.login_api, data });
         console.log("response===",response);
 
+        
         toast.success("Log-in success");
-        // navigate(user.profile_route);
-        window.location.reload()
+        navigate('/pickles');
+        // window.location.reload()
     } catch (error) {
         toast.error("Log-in failed");
         console.log(error);
