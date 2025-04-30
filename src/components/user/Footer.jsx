@@ -1,5 +1,10 @@
 import React from 'react'
 import Logo from '/logo.png'
+import facebook from '../../photos/facebook.png'
+import instagram from '../../photos/instagram.png'
+import twitter from '../../photos/twitter.png'
+import linkedin from '../../photos/linkedin.png'
+import youtube from '../../photos/youtube.png'
 
 const Footer = () => {
   return (
@@ -15,7 +20,7 @@ const Footer = () => {
           </h1>
           <p />
           <p className="mt-[18px] text-[15px] font-normal text-white/[80%]">
-          © 2024 Gourment Limited
+          © 2025 Pickle Walah Limited
           </p>
           <div className="mt-[18px] flex gap-4">
             <a className="hover:scale-110" target="_blank" href="#">
@@ -27,10 +32,10 @@ const Footer = () => {
                 decoding="async"
                 data-nimg={1}
                 style={{ color: "transparent" }}
-                src="https://th.bing.com/th/id/R.2bad70f2d08429a28dfbebd4c237924b?rik=vgEdhJ%2f%2biiEnQQ&riu=http%3a%2f%2fpngimg.com%2fuploads%2ffacebook_logos%2ffacebook_logos_PNG19748.png&ehk=0ZiZ04ZZ6mSJ5oyPxBh1gy4FSYhegWTWyDpCiI73sbw%3d&risl=&pid=ImgRaw&r=0"
+                src={facebook}
               />
             </a>
-            <a className="hover:scale-110" target="_blank" href="/">
+            <a className="hover:scale-110" target="_blank" href="#">
               <img
                 alt="linkdin icon"
                 loading="lazy"
@@ -39,10 +44,10 @@ const Footer = () => {
                 decoding="async"
                 data-nimg={1}
                 style={{ color: "transparent" }}
-                src="https://th.bing.com/th/id/OIP.2vAVHsnjWjVWawdQXIUlzgHaHw?rs=1&pid=ImgDetMain"
+                src={linkedin}
               />
             </a>
-            <a className="hover:scale-110" target="_blank" href="/">
+            <a className="hover:scale-110" target="_blank" href="#">
               <img
                 alt="instagram icon"
                 loading="lazy"
@@ -51,10 +56,10 @@ const Footer = () => {
                 decoding="async"
                 data-nimg={1}
                 style={{ color: "transparent" }}
-                src="https://th.bing.com/th/id/R.0768c020c0fa1573b84bfdf665d341b7?rik=1mf%2binWPP3jAGw&riu=http%3a%2f%2fandersonmgt.com%2fwp-content%2fuploads%2f2020%2f05%2fInstagram-icon.jpg&ehk=hK6l5LWS7A7lvg4vNPOAdW5e6BgImpLTgUMzGlg8F9g%3d&risl=&pid=ImgRaw&r=0"
+                src={instagram}
               />
             </a>
-            <a className="hover:scale-110" target="_blank" href="">
+            <a className="hover:scale-110" target="_blank" href="#">
               <img
                 alt="twitter icon"
                 loading="lazy"
@@ -63,13 +68,13 @@ const Footer = () => {
                 decoding="async"
                 data-nimg={1}
                 style={{ color: "transparent" }}
-                src="https://th.bing.com/th/id/OIP.PXTov9TveYX3Upu592UOygHaHa?w=209&h=209&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+                src={twitter}
               />
             </a>
             <a
               className="hover:scale-110"
               target="_blank"
-              href="https://www.youtube.com/"
+              href="#"
             >
               <img
                 alt="youtube icon"
@@ -79,7 +84,7 @@ const Footer = () => {
                 decoding="async"
                 data-nimg={1}
                 style={{ color: "transparent" }}
-                src="https://th.bing.com/th/id/OIP.1hX8tUyNC8XTZ8u6BLuGEAHaHa?w=182&h=182&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+                src={youtube}
               />
             </a>
           </div>
@@ -105,7 +110,7 @@ const Footer = () => {
                 href="tel:+911800123444"
                 className="font-Inter text-[14px] font-medium text-white"
               >
-                +91 1800123444
+                +91 9567870886
               </a>
               <p className="font-Inter text-[12px] font-medium text-white">
                 Support Number
@@ -129,10 +134,10 @@ const Footer = () => {
             </div>
             <div className="ml-[18px]">
               <a
-                href="mailto:help@lorem.com"
+                href="#"
                 className="font-Inter text-[14px] font-medium text-[#fff]"
               >
-                help@lorem.com
+                picklewalah@gmail.com
               </a>
               <p className="font-Inter text-[12px] font-medium text-[#fff]">
                 Support Email
@@ -159,7 +164,7 @@ const Footer = () => {
                 href="mailto:help@lorem.com"
                 className="font-Inter text-[14px] font-medium text-[#fff]"
               >
-                Thamrassery, Calicut, India, 123456
+                Vadakara, Calicut, India, 683521
               </a>
               <p className="font-Inter text-[12px] font-medium text-white">
                 Address
@@ -184,7 +189,7 @@ const Footer = () => {
               <li className="mt-[15px]">
                 <a
                   className="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
-                  href="/our-tutors"
+                  href="#"
                 >
                   News
                 </a>
@@ -192,7 +197,7 @@ const Footer = () => {
               <li className="mt-[15px]">
                 <a
                   className="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
-                  href="/become-a-tutor"
+                  href="#"
                 >
                   Contact
                 </a>
@@ -200,7 +205,7 @@ const Footer = () => {
               <li className="mt-[15px]">
                 <a
                   className="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
-                  href="/plans-and-pricing"
+                  href="#"
                 >
                   Plans and pricing
                 </a>
@@ -210,15 +215,7 @@ const Footer = () => {
                   className="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
                   href="/terms-and-conditions"
                 >
-                  Terms and conditions
-                </a>
-              </li>
-              <li className="mt-[15px]">
-                <a
-                  className="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
-                  href="/privacy-policy"
-                >
-                  Privcay policy
+                  Privacy and policy
                 </a>
               </li>
             </ul>
@@ -228,9 +225,9 @@ const Footer = () => {
               Download the app
             </p>
             <div className="flex gap-4 sm:flex-col">
-              <a target="_blank" href="#">
+              <a target="#" href="#">
                 <img
-                  alt="facebook icon"
+                  alt="app icon"
                   loading="lazy"
                   width={168}
                   height={50}
@@ -240,18 +237,7 @@ const Footer = () => {
                   src="https://clipground.com/images/download-app-png-1.png"
                 />
               </a>
-              {/* <a target="_blank" href="#">
-                <img
-                  alt="facebook icon"
-                  loading="lazy"
-                  width={168}
-                  height={50}
-                  decoding="async"
-                  data-nimg={1}
-                  style={{ color: "transparent" }}
-                  src="https://www.englishyaari.com/img/apple-store.svg"
-                />
-              </a> */}
+              
             </div>
           </div>
         </div>

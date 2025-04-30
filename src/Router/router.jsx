@@ -18,6 +18,7 @@ import ProfilePage from "../pages/User/Profile/Profile";
 import Invoice from "../pages/User/CheckoutPage/Invoice";
 import ItemDetails from "../pages/ItemDetails";
 import Pickles from "../pages/Pickles";
+import TermsAndConditions from "../pages/User/termsAndCondition/TermsAndConditions";
 
 const router = createBrowserRouter([
   {
@@ -79,77 +80,13 @@ const router = createBrowserRouter([
             path:"checkout/invoice/:orderId",
             element:<Invoice />
           },
+          
          
         ]
       }
     ],
   },
-  // {
-  //   path: "admin",
-  //   element: <AdminLayout />,
-  //   errorElement: <ErrorPage />,
-  //   children: [
-  //     {
-  //       path: "",
-  //       element: <Home />,
-  //     },
-  //     {
-  //       path: "signup",
-  //       element: <Signup />,
-  //     },
-  //     {
-  //       path: "loginPage",
-  //       element: <LoginPage role="admin"  />,
-  //     },
-  //     {
-  //       path: "about",
-  //       element: <About />,
-  //     },
-  //     {
-  //       path: "all-restuarant",
-  //       element: <AllRestaurants />,
-  //     },
-  //     {
-  //       path: "restaurantPage/:id",
-  //       element: <RestaurantPage />,
-  //     },
-  //     {
-  //       path:"review/:id",
-  //       element:<ReviewPage />
-  //     },
-  //     {
-  //       path: "payment",
-  //       element: <Payment />,
-  //     },
-  //     {
-  //       element:<ProtectedRoute />,
-  //       path:"/",
-  //       children:[
-  //         {
-  //           path: "cart",
-  //           element: <Cart />,
-  //         },
-  //         {
-  //           path: "order",
-  //           element: <OrderDetails />,
-  //         },
-  //         {
-  //           path: "profile",
-  //           element: <ProfilePage />,
-  //         },
-  //         {
-  //           path: "contact",
-  //           element: <Contact />,
-  //         },
-  //         {
-  //           path:"checkout",
-  //           element:<CheckoutPage />
-  //         },
-         
-  //       ]
-  //     }
-  //   ],
-  // },
+ 
   
 ]);
 

@@ -57,10 +57,8 @@ const SignUpPage = ({ isOpen, onClose }) => {
       try {
         const response = await axiosInstance.post('/user/signup', formData);
         if (response.data.success) {
-          toast.success('Signup successful!');
+         
           setFormData({ name: '', email: '', password: '', phone: '', otp: '' }); // Reset form
-        } else {
-          alert(response.data.message || 'Signup failed. Please try again.');
         }
       } catch (error) {
         if (error.response?.data?.message === 'user already exist') {
@@ -68,10 +66,13 @@ const SignUpPage = ({ isOpen, onClose }) => {
         } else {
           toast.error(error.response?.data?.message || 'An error occurred. Please try again.');
         }
+        
       } finally {
-        setLoading(false);
-        onClose();
-        window.location.reload();
+        toast.success('Signup successful!');
+setTimeout(() => {
+  onClose();
+  window.location.reload();
+}, 2000);;
       }
     }
   };
