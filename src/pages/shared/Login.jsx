@@ -27,8 +27,7 @@ const Login = ({ isOpen, onClose, onOpenSignUp }) => {
 
         
         toast.success("Log-in success");
-        navigate('/pickles');
-        // window.location.reload()
+        window.location.reload()
     } catch (error) {
         toast.error("Log-in failed");
         console.log(error);

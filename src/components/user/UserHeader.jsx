@@ -42,9 +42,9 @@ function UserHeader() {
       await axiosInstance({ method: "PUT", url: "user/logout" });
       localStorage.clear();
       toast.success("Logout successfully");
-      navigate("/");
-      
-    } catch (error) {
+      window.location.reload()
+
+     } catch (error) {
       console.error(error);
     }
   };
