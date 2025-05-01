@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import hero from '../../../public/hero.jpg';
-import Card from '../../components/user/card/Card';
+import Card from '../../components/user/card/Card.jsx';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
