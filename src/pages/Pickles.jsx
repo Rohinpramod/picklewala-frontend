@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import pickelBanner from '../../public/pickle banner.webp'
-import Card from "../components/user/card/card";
+import Card from "../components/user/card/Card.jsx";
 
 const Pickles = () => {
 
