@@ -35,14 +35,14 @@ const Card = ({ selectedCategory }) => {
     : items.filter(item => String(item.category || '').toLowerCase() === selectedCategory);
 
   return (
-    <div className="w-full px-4 py-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
+    <div className="w-full px-auto py-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-6">
         {filteredItems.map((item, index) => (
           <div
             key={index}
             className="bg-white shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
           >
-            <figure className="w-full h-48 overflow-hidden">
+            <figure className="w-full h-auto overflow-hidden">
               <Link to={`item-Details/${item._id}`}>
                 <img
                   src={item.image}
@@ -51,7 +51,7 @@ const Card = ({ selectedCategory }) => {
                 />
               </Link>
             </figure>
-            <div className="p-4 flex flex-col justify-between h-60">
+            <div className="p-3 flex flex-col justify-between h-60">
               <div>
                 <h2 className="text-xl font-semibold mb-2 text-gray-800">
                   {item.name}
