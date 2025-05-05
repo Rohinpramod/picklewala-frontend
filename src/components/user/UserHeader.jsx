@@ -42,11 +42,11 @@ function UserHeader() {
       await axiosInstance({ method: "PUT", url: "user/logout" });
       localStorage.clear();
       toast.success("Logout successfully");
-      setTimeout(() => {
+      // setTimeout(() => {
         
-        window.location.reload();
-      }, 1000);
-      
+      //   window.location.reload();
+      // }, 1000);
+      navigate('/pickles')
      } catch (error) {
       console.error(error);
     }
