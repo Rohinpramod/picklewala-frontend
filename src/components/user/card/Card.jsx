@@ -26,7 +26,8 @@ const Card = ({ selectedCategory }) => {
       });
       toast.success('Added to Cart');
     } catch (error) {
-      toast.error('Error adding to cart');
+      toast.error('No User found Please login');
+      console.log({message:error.message})
     }
   };
 
