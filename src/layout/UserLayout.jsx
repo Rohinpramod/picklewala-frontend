@@ -19,11 +19,13 @@ const UserLayout = () => {
         method: 'GET',
         url: '/user/check-user',
       });
-      dispatch(saveUserData(response.data)); // make sure to pass the data
-      setShowLoginPopup(false); // hide popup if authenticated
+      dispatch(saveUserData(response.data)); 
+      setShowLoginPopup(false); 
     } catch (error) {
       dispatch(clearUserData());
-      setShowLoginPopup(true); // show popup if not authenticated
+      setTimeout(() => {
+        setShowLoginPopup(true);
+      }, 60000);
       console.log(error);
     }
   };
