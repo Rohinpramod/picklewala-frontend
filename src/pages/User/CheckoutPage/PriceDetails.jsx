@@ -85,7 +85,7 @@ function PriceDetails({
       razorpayInstance.open();
     } catch (error) {
       console.error("Failed to place the order:", error.response?.data || error.message);
-      toast.error(error.response?.data?.message || "Error while placing the order.");
+      toast.error("All fields required ");
     }
   };
 
