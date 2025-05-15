@@ -7,7 +7,7 @@ const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 font-sans">
+    <div className="w-full min-h-screen bg-gray-100 font-sans">
       {/* Hero Section */}
       <div className="relative w-full h-[60vh]">
         <img
