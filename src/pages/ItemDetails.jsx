@@ -35,7 +35,7 @@ const ItemDetails = () => {
             });
          toast.success('Added to Cart')
         }catch(error){
-            toast.error('Error adding to cart:',error.messaage);
+            toast.error('Please login',error.messaage);
         }
       };
      

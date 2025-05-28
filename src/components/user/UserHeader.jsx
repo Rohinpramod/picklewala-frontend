@@ -16,11 +16,11 @@ import logo from "/logo.png";
 import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
+import { CiSearch } from "react-icons/ci";
 
 const navigation = [
   { name: "About Us", href: "/about", key: "about" },
-  { name: "Pickles", href: "pickles", key: "pickles" }
- 
+  { name: "Pickles", href: "pickles", key: "pickles" },
 ];
 
 function classNames(...classes) {
@@ -28,14 +28,46 @@ function classNames(...classes) {
 }
 
 function UserHeader() {
-  const navigate = useNavigate();
   const location = useLocation();
   const [cartCount, setCartCount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredItem, setFilteredItem] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     setCartCount(cartItems.length);
   }, [location]);
+
+  const handleSearchChange = async (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    if (!query.trim()) {
+      setFilteredItem([]);
+      return;
+    }
+
+    try {
+      const response = await axiosInstance.get("/menu-items/get-all-menu");
+      const data = response.data;
+
+      const filtered = data.filter((menu) =>
+        menu.name.toLowerCase().includes(query.toLowerCase())
+      );
+
+      setFilteredItem(filtered);
+    } catch (err) {
+      setFilteredItem([]);
+      console.error("Search error:", err);
+    }
+  };
+
+  const handleMenuClick = (id) => {
+    setSearchQuery("");
+    setFilteredItem([]);
+    navigate(`item-Details/${id}`);
+  };
 
   const userLogout = async () => {
     try {
@@ -43,11 +75,10 @@ function UserHeader() {
       localStorage.clear();
       toast.success("Logout successfully");
       setTimeout(() => {
-        
         window.location.reload();
       }, 1000);
-      navigate('/')
-     } catch (error) {
+      navigate("/");
+    } catch (error) {
       console.error(error);
     }
   };
@@ -78,6 +109,39 @@ function UserHeader() {
             </Link>
           </div>
 
+           <div className="flex-1 flex justify-center">
+            <div className="relative w-full max-w-lg">
+              <input
+                type="text"
+                className="search p-2 w-full rounded-full border focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder="Search for Restaurant, item or more"
+                value={searchQuery}
+                onChange={handleSearchChange}
+              />
+              <CiSearch className="absolute top-2.5 right-4 text-2xl text-black" />
+              {searchQuery && (
+                <div className="absolute bg-white w-full mt-2 p-4 rounded-md shadow-lg z-50">
+                  <h2 className="font-bold text-lg mb-2">Search Results:</h2>
+                  <div className="flex flex-wrap gap-2">
+                    {filteredItem.length > 0 ? (
+                      filteredItem.map((item) => (
+                        <div
+                          key={item._id}
+                          className="cursor-pointer hover:underline"
+                          onClick={() => handleMenuClick(item._id)}
+                        >
+                          <p className="text-blue-500">{item.name}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <p>No results found.</p>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
           <div className="flex flex-1 items-center justify-start sm:items-stretch sm:justify-start">
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
@@ -91,7 +155,9 @@ function UserHeader() {
                         : "text-gray-900 hover:text-red-700 hover:scale-110 transition-all duration-300",
                       "rounded-md px-3 py-2 text-sm font-medium"
                     )}
-                    aria-current={location.pathname === item.href ? "page" : undefined}
+                    aria-current={
+                      location.pathname === item.href ? "page" : undefined
+                    }
                   >
                     {item.name}
                   </Link>
@@ -177,7 +243,9 @@ function UserHeader() {
                   : "text-gray-300 hover:bg-gray-700 hover:text-white",
                 "block rounded-md px-3 py-2 text-base font-medium"
               )}
-              aria-current={location.pathname === item.href ? "page" : undefined}
+              aria-current={
+                location.pathname === item.href ? "page" : undefined
+              }
             >
               {item.name}
             </DisclosureButton>
